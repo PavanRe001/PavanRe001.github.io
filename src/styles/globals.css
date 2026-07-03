@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #FFFFFF;
+  --color-muted: #64748B;
+  --color-accent: #C7FF2F;
+  --color-text: #0F172A;
+  --color-bg: #FAFAFA;
+}
+
+@layer base {
+  :root {
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --text: #0F172A;
+    --muted: #64748B;
+    --accent: #C7FF2F;
+    --border: rgba(255, 255, 255, 0.5);
+    --glow: rgba(199, 255, 47, 0.25);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Satoshi', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    /* Prevent costly repaints from bleeding into fixed elements */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Clash Display', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  .glass-card-strong {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* CSS marquee — zero JS, runs entirely on GPU compositor */
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  /* Scroll-dot bounce */
+  .scroll-dot {
+    animation: scrollDot 1.4s ease-in-out infinite;
+  }
+
+  @keyframes scrollDot {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(4px); }
+  }
+}
+
